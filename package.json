@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-boost": "^0.1.16",
     "auth0-js": "^9.8.0",
+    "graphql": "^14.0.2",
     "history": "^4.7.2",
     "react": "^16.5.2",
+    "react-apollo": "^2.2.2",
     "react-bootstrap": "^0.32.4",
     "react-dom": "^16.5.2",
     "react-router-dom": "^4.3.1",

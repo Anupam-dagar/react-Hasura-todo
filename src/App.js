@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Home from './Components/Home';
 import { Navbar, Button } from 'react-bootstrap';
 import './App.css';
 

@@ -1,4 +1,23 @@
 import React, { Component } from 'react';
+import ApolloClient from "apollo-boost";
+import gql from "graphql-tag";
+
+const client = new ApolloClient({
+  uri: "https://hasura-react-todo.herokuapp.com/v1alpha1/graphql"
+});
+
+client
+  .query({
+    query: gql`
+      {
+        profile{
+          id
+          name
+        }
+      }
+    `
+  })
+  .then(result => console.log(result));
 
 class Home extends Component {
   login() {
