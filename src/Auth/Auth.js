@@ -39,6 +39,7 @@ export default class Auth {
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+    localStorage.setItem('sub', authResult.idTokenPayload.sub);
     // navigate to the home route
     history.replace('/home');
   }
@@ -48,6 +49,7 @@ export default class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('sub');
     // navigate to the home route
     history.replace('/home');
   }

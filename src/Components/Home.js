@@ -20,6 +20,7 @@ client
           todo_id
           todo_text
           todo_mark
+          user_id
       }
   }
     `
