@@ -1,20 +1,27 @@
 import React, { Component } from 'react';
 import ApolloClient from "apollo-boost";
 import gql from "graphql-tag";
+import { ApolloProvider } from "react-apollo";
+import Todos from './Todos';
 
+const ACCESS_TOKEN = localStorage.getItem('access_token');
 const client = new ApolloClient({
-  uri: "https://hasura-react-todo.herokuapp.com/v1alpha1/graphql"
+  uri: "https://hasura-react-todo.herokuapp.com/v1alpha1/graphql",
+  headers: {
+    Authorization: `Bearer ${ACCESS_TOKEN}`,
+  }
 });
 
 client
   .query({
     query: gql`
-      {
-        profile{
-          id
-          name
-        }
+    {
+      todos{
+          todo_id
+          todo_text
+          todo_mark
       }
+  }
     `
   })
   .then(result => console.log(result));
@@ -26,29 +33,13 @@ class Home extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
-      <div className="container">
-        {
-          isAuthenticated() && (
-              <h4>
-                You are logged in!
-              </h4>
-            )
-        }
-        {
-          !isAuthenticated() && (
-              <h4>
-                You are not logged in! Please{' '}
-                <a
-                  style={{ cursor: 'pointer' }}
-                  onClick={this.login.bind(this)}
-                >
-                  Log In
-                </a>
-                {' '}to continue.
-              </h4>
-            )
-        }
-      </div>
+      isAuthenticated() && (
+        <ApolloProvider client={client}>
+          <div className="container">
+            <Todos />
+          </div>
+        </ApolloProvider>
+      )
     );
   }
 }
