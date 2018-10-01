@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import { deleteTodo, getIncompleteTodos } from '../queries';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Button } from 'react-bootstrap';
 
 class DeleteTodo extends Component {
     constructor(props) {
@@ -17,16 +20,10 @@ class DeleteTodo extends Component {
         return (
             <Mutation mutation={deleteTodo}>
                 {(delete_todos, { data }) => (
-                    <div>
-                        <form
-                            onSubmit={e => {
-                                e.preventDefault();
-                                this.deletetodo(delete_todos);
-                            }}
-                        >
-                            <button type="submit">Delete Todo</button>
-                        </form>
-                    </div>
+                    <Button onClick={e => {
+                        e.preventDefault();
+                        this.deletetodo(delete_todos);
+                    }}  ><FontAwesomeIcon icon={faTimes} style={{ color: 'red' }} /></Button>
                 )}
             </Mutation>
         );

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
 import { addTodo, getIncompleteTodos } from '../queries';
-
+import { FormGroup, FormControl, Button, InputGroup, Form } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 class AddTodos extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +17,7 @@ class AddTodos extends Component {
     addtodo(insert_todos) {
         var todo_user = localStorage.getItem('sub');
         this.setState({ todo_user: todo_user }, function () {
-            insert_todos({ variables: this.state ,refetchQueries: [{query: getIncompleteTodos}]});
+            insert_todos({ variables: this.state, refetchQueries: [{ query: getIncompleteTodos }] });
         });
     }
 
@@ -23,22 +25,27 @@ class AddTodos extends Component {
         return (
             <Mutation mutation={addTodo}>
                 {(insert_todos, { data }) => (
-                    <div>
-                        <form
-                            onSubmit={e => {
-                                e.preventDefault();
-                                this.addtodo(insert_todos);
-                            }}
-                        >
-                            <input
-                                className="mb2"
-                                onChange={e => this.setState({ todo_text: e.target.value })}
+                    <Form
+                        onSubmit={e => {
+                            e.preventDefault();
+                            this.addtodo(insert_todos);
+                        }}
+                    >
+
+                        <FormGroup controlId="Createtodo" style={{'margin-bottom':'0px'}}>
+                            <InputGroup>
+                            <FormControl
                                 type="text"
-                                placeholder="A text"
-                            />
-                            <button type="submit">Add Todo</button>
-                        </form>
-                    </div>
+                                value={this.state.todo_text}
+                                placeholder="Create a todo task."
+                                onChange={e => this.setState({ todo_text: e.target.value })}
+                          />
+                          <InputGroup.Button>
+                          <Button type="submit"><FontAwesomeIcon icon={faPlus} style={{ color: 'blue' }} /></Button>
+                          </InputGroup.Button>
+                          </InputGroup>
+                        </FormGroup>
+                    </Form>
                 )}
             </Mutation>
         );

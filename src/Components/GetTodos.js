@@ -4,7 +4,7 @@ import { getIncompleteTodos } from '../queries';
 import MarkTodo from './MarkTodo';
 import DeleteTodo from './DeleteTodo';
 import AddTodos from './AddTodos';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, ButtonGroup, Grid, Row, Col } from 'react-bootstrap';
 
 const GetTodos = () => (
     <Query query={getIncompleteTodos}>
@@ -17,18 +17,33 @@ const GetTodos = () => (
                     <AddTodos />
                 </div>
             );
+            let count = 0;
             return (
                 <div>
-                    <ListGroup>
-                        {data.todos.map(todo => (
-                            <ListGroupItem>
-                                {todo.todo_id} - {todo.todo_text} - {todo.todo_user}
-                                <MarkTodo todo_id={todo.todo_id} />
-                                <DeleteTodo todo_id={todo.todo_id} />
-                            </ListGroupItem>
-                        ))}
-                    </ListGroup>
-                    <AddTodos />
+                    <Grid>
+                        <Row>
+                            <Col md={8} mdPush={2}>
+                                <ListGroup>
+                                    {data.todos.map((todo) => (
+
+                                        <ListGroupItem>
+                                            <ButtonGroup className="pull-right">
+                                                <MarkTodo todo_id={todo.todo_id} />
+                                                <DeleteTodo todo_id={todo.todo_id} />
+                                            </ButtonGroup>
+                                            <h4>{count = count + 1}. {todo.todo_text}</h4>
+                                        </ListGroupItem>
+
+                                    ))}
+                                </ListGroup>
+                                <ListGroup>
+                                    <ListGroupItem>
+                                        <AddTodos />
+                                    </ListGroupItem>
+                                </ListGroup>
+                            </Col>
+                        </Row>
+                    </Grid>
                 </div>
             );
         }}

@@ -23,24 +23,27 @@ class App extends Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="/">Hasura Todo</a>
+              <a href="/" style={{ 'padding-top': '23px' }}>Hasura Todo</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav>
-              <NavItem eventKey={1} href="#">
-                <Button
-                  bsStyle="primary"
-                  className="btn-margin"
-                  onClick={this.goTo.bind(this, 'home')}
-                >
-                  Home
-            </Button>
-              </NavItem>
-            </Nav>
             <Nav pullRight>
-              <NavItem eventKey={1} href="#">
+              <NavItem eventKey={1}>
+                {
+                  isAuthenticated() && (
+                    <Button
+                      bsStyle="success"
+                      className="btn-margin"
+                      onClick={this.goTo.bind(this, 'home')}
+                    >
+                      Home
+            </Button>
+                  )
+                }
+
+              </NavItem>
+              <NavItem eventKey={2} href="#">
                 {
                   !isAuthenticated() && (
                     <Button
@@ -55,7 +58,7 @@ class App extends Component {
                 {
                   isAuthenticated() && (
                     <Button
-                      bsStyle="primary"
+                      bsStyle="danger"
                       className="btn-margin"
                       onClick={this.logout.bind(this)}
                     >
