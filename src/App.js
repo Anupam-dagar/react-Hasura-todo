@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Navbar, Button, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
+import { Navbar, Button, Nav, NavItem, Image, Grid, Row, Col } from 'react-bootstrap';
 import './App.css';
-
+import Hasura from './assets/hasura_logo.png'
 class App extends Component {
   goTo(route) {
     this.props.history.replace(`/${route}`)
@@ -70,7 +70,27 @@ class App extends Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-
+        {
+          !isAuthenticated() && (
+            <div className="container">
+              <Grid>
+                <Row>
+                  <Col md={2} mdPush={5}>
+                    <Image src={Hasura} responsive />
+                    <h3>React Todo</h3>
+                    <Button
+                      bsStyle="primary"
+                      className="btn-margin"
+                      onClick={this.login.bind(this)}
+                    >
+                      Log In To Continue
+                  </Button>
+                  </Col>
+                </Row>
+              </Grid>
+            </div>
+          )
+        }
       </div>
 
     );
