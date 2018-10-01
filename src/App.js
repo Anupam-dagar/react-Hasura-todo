@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, Button } from 'react-bootstrap';
+import { Navbar, Button, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap';
 import './App.css';
 
 class App extends Component {
@@ -20,43 +20,56 @@ class App extends Component {
 
     return (
       <div>
-        <Navbar fluid>
+        <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Auth0 - React</a>
+              <a href="/">Hasura Todo</a>
             </Navbar.Brand>
-            <Button
-              bsStyle="primary"
-              className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
-            >
-              Home
-            </Button>
-            {
-              !isAuthenticated() && (
-                  <Button
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.login.bind(this)}
-                  >
-                    Log In
-                  </Button>
-                )
-            }
-            {
-              isAuthenticated() && (
-                  <Button
-                    bsStyle="primary"
-                    className="btn-margin"
-                    onClick={this.logout.bind(this)}
-                  >
-                    Log Out
-                  </Button>
-                )
-            }
+            <Navbar.Toggle />
           </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <NavItem eventKey={1} href="#">
+                <Button
+                  bsStyle="primary"
+                  className="btn-margin"
+                  onClick={this.goTo.bind(this, 'home')}
+                >
+                  Home
+            </Button>
+              </NavItem>
+            </Nav>
+            <Nav pullRight>
+              <NavItem eventKey={1} href="#">
+                {
+                  !isAuthenticated() && (
+                    <Button
+                      bsStyle="primary"
+                      className="btn-margin"
+                      onClick={this.login.bind(this)}
+                    >
+                      Log In
+                  </Button>
+                  )
+                }
+                {
+                  isAuthenticated() && (
+                    <Button
+                      bsStyle="primary"
+                      className="btn-margin"
+                      onClick={this.logout.bind(this)}
+                    >
+                      Log Out
+                  </Button>
+                  )
+                }
+              </NavItem>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
+
       </div>
+
     );
   }
 }

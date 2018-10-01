@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ApolloClient from "apollo-boost";
-import gql from "graphql-tag";
 import { ApolloProvider } from "react-apollo";
-import Todos from './Todos';
+import AddTodos from './AddTodos';
+import GetTodos from './GetTodos';
 
 const ACCESS_TOKEN = localStorage.getItem('access_token');
 const client = new ApolloClient({
@@ -11,21 +11,6 @@ const client = new ApolloClient({
     Authorization: `Bearer ${ACCESS_TOKEN}`,
   }
 });
-
-client
-  .query({
-    query: gql`
-    {
-      todos{
-          todo_id
-          todo_text
-          todo_mark
-          user_id
-      }
-  }
-    `
-  })
-  .then(result => console.log(result));
 
 class Home extends Component {
   login() {
@@ -37,7 +22,7 @@ class Home extends Component {
       isAuthenticated() && (
         <ApolloProvider client={client}>
           <div className="container">
-            <Todos />
+            <GetTodos />           
           </div>
         </ApolloProvider>
       )
