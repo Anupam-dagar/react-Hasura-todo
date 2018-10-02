@@ -5,7 +5,7 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'hasuratodo.auth0.com',
     clientID: 'YLlsHJNG7bc662JfGTHfXAvllGWhp2FI',
-    redirectUri: 'http://localhost:3000/callback',
+    redirectUri: 'https://reacttodohasura.herokuapp.com/callback',
     responseType: 'token id_token',
     scope: 'openid'
   });

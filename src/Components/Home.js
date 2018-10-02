@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
-import AddTodos from './AddTodos';
 import GetTodos from './GetTodos';
 
 const ACCESS_TOKEN = localStorage.getItem('access_token');

@@ -11,7 +11,7 @@ const GetTodos = () => (
         {({ loading, error, data }) => {
             if (loading) return "Loading...";
             if (error) return `Error! ${error.message}`;
-            if (data.todos.length == 0) return (
+            if (data.todos.length === 0) return (
                 <div>
                     <h3>No Todos Created Yet</h3>
                     <AddTodos />
