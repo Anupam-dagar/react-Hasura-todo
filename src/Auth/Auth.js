@@ -4,8 +4,8 @@ import history from '../history';
 export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'hasuratodo.auth0.com',
-    clientID: 'YLlsHJNG7bc662JfGTHfXAvllGWhp2FI',
-    redirectUri: 'https://reacttodohasura.herokuapp.com/callback',
+    clientID: process.env.clientID,
+    redirectUri: process.env.redirectUri,
     responseType: 'token id_token',
     scope: 'openid'
   });
