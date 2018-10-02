@@ -35,15 +35,29 @@ class App extends Component {
                     <Button
                       bsStyle="success"
                       className="btn-margin"
-                      onClick={this.goTo.bind(this, 'home')}
+                      onClick={this.goTo.bind(this, 'manage')}
                     >
-                      Home
+                      Manage Todos
             </Button>
                   )
                 }
 
               </NavItem>
-              <NavItem eventKey={2} href="#">
+              <NavItem eventKey={2}>
+                {
+                  isAuthenticated() && (
+                    <Button
+                      bsStyle="success"
+                      className="btn-margin"
+                      onClick={this.goTo.bind(this, 'alltodos')}
+                    >
+                      All Todos
+            </Button>
+                  )
+                }
+
+              </NavItem>
+              <NavItem eventKey={3} href="#">
                 {
                   !isAuthenticated() && (
                     <Button

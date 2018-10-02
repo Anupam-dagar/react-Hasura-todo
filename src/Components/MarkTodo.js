@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { markTodo, getIncompleteTodos } from '../queries';
+import { markTodo, getIncompleteTodos, getAllTodos } from '../queries';
 import { Mutation } from 'react-apollo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -13,7 +13,7 @@ class MarkTodo extends Component {
     }
 
     marktodo_completed(update_todos) {
-        update_todos({ variables: this.props, refetchQueries: [{ query: getIncompleteTodos }] })
+        update_todos({ variables: this.props, refetchQueries: [{ query: getIncompleteTodos }, { query: getAllTodos }] })
     }
 
     render() {
@@ -23,8 +23,8 @@ class MarkTodo extends Component {
                     <Button onClick={e => {
                         e.preventDefault();
                         this.marktodo_completed(update_todos);
-                    }} ><FontAwesomeIcon  icon={faCheck} style={{color:'green'}} /></Button>
-                    
+                    }} ><FontAwesomeIcon icon={faCheck} style={{ color: 'green' }} /></Button>
+
                 )}
             </Mutation>
         );

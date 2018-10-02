@@ -5,7 +5,6 @@ import MarkTodo from './MarkTodo';
 import DeleteTodo from './DeleteTodo';
 import AddTodos from './AddTodos';
 import { ListGroup, ListGroupItem, ButtonGroup, Grid, Row, Col } from 'react-bootstrap';
-
 const GetTodos = () => (
     <Query query={getIncompleteTodos}>
         {({ loading, error, data }) => {

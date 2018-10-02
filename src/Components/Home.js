@@ -4,7 +4,7 @@ import { ApolloProvider } from "react-apollo";
 import GetTodos from './GetTodos';
 
 const ACCESS_TOKEN = localStorage.getItem('access_token');
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: "https://hasura-react-todo.herokuapp.com/v1alpha1/graphql",
   headers: {
     Authorization: `Bearer ${ACCESS_TOKEN}`,

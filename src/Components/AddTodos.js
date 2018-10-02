@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Mutation } from 'react-apollo';
-import { addTodo, getIncompleteTodos } from '../queries';
+import { addTodo, getIncompleteTodos, getAllTodos } from '../queries';
 import { FormGroup, FormControl, Button, InputGroup, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -17,7 +17,7 @@ class AddTodos extends Component {
     addtodo(insert_todos) {
         var todo_user = localStorage.getItem('sub');
         this.setState({ todo_user: todo_user }, function () {
-            insert_todos({ variables: this.state, refetchQueries: [{ query: getIncompleteTodos }] });
+            insert_todos({ variables: this.state, refetchQueries: [{ query: getIncompleteTodos }, {query: getAllTodos}] });
         });
     }
 

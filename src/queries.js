@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const getAllTodos = gql`{
-    todos{
+    todos(order_by: [todo_mark_asc,todo_id_desc]){
         todo_id
         todo_text
         todo_mark
@@ -12,6 +12,17 @@ export const getAllTodos = gql`{
 export const getIncompleteTodos = gql`{
     todos(
         where: {todo_mark: {_eq:false}}
+    ){
+        todo_id
+        todo_text
+        todo_mark
+        todo_user
+    }
+}`;
+
+export const getCompleteTodos = gql`{
+    todos(
+        where: {todo_mark: {_eq:true}}
     ){
         todo_id
         todo_text
@@ -52,6 +63,17 @@ export const deleteTodo = gql`
             where: {todo_id: {_eq:$todo_id}}
         ){
             affected_rows
+        }
+    }
+`;
+
+export const getTodosSubscription = gql`
+    subscription onTodoMarked{
+        todos{
+            todo_id
+            todo_text
+            todo_mark
+            todo_user
         }
     }
 `;
