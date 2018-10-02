@@ -6,6 +6,8 @@ import DeleteTodo from './DeleteTodo';
 import { ListGroup, ListGroupItem, ButtonGroup, Grid, Row, Col } from 'react-bootstrap';
 import { client } from './Home';
 import { ApolloProvider } from "react-apollo";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 class GetAllTodos extends Component {
     constructor(props) {
@@ -26,7 +28,7 @@ class GetAllTodos extends Component {
                             <Col md={8} mdPush={2}>
                                 <Query query={getAllTodos}>
                                     {({ loading, error, data }) => {
-                                        if (loading) return "Loading...";
+                                        if (loading) return (<h2>Loading... <FontAwesomeIcon icon={faSpinner} style={{ color: 'blue' }} spin /></h2>);
                                         if (error) return `Error! ${error.message}`;
                                         let count = 0;
                                         return (

@@ -5,10 +5,13 @@ import MarkTodo from './MarkTodo';
 import DeleteTodo from './DeleteTodo';
 import AddTodos from './AddTodos';
 import { ListGroup, ListGroupItem, ButtonGroup, Grid, Row, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+
 const GetTodos = () => (
     <Query query={getIncompleteTodos}>
         {({ loading, error, data }) => {
-            if (loading) return "Loading...";
+            if (loading) return (<h2>Loading... <FontAwesomeIcon icon={faSpinner} style={{ color: 'blue' }} spin /></h2>);
             if (error) return `Error! ${error.message}`;
             if (data.todos.length === 0) return (
                 <div>

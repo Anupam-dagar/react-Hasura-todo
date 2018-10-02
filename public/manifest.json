@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Hasura React Todo App",
+  "name": "A simple todo app using Hasura GraphQL Engine",
   "icons": [
     {
       "src": "favicon.ico",
