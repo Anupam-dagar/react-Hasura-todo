@@ -4,8 +4,8 @@ import history from '../history';
 export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'hasuratodo.auth0.com',
-    clientID: process.env.clientID,
-    redirectUri: process.env.redirectUri,
+    clientID: process.env.REACT_APP_CLIENTID,
+    redirectUri: process.env.REACT_APP_REDIRECTURI,
     responseType: 'token id_token',
     scope: 'openid'
   });
