@@ -24,8 +24,8 @@ export const makeMainRoutes = () => {
         <Route path="/alltodos" render={(props) => <GetAllTodos auth={auth} {...props} />} />
         <Route path="/callback" render={(props) => {
           handleAuthentication(props);
-          return <Callback {...props} /> 
-        }}/>
+          return <Callback {...props} />
+        }} />
       </div>
     </Router>
   );

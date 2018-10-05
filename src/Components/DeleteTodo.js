@@ -28,7 +28,6 @@ class DeleteTodo extends Component {
             </Mutation>
         );
     }
-
 }
 
 export default DeleteTodo;

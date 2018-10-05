@@ -35,7 +35,6 @@ const GetTodos = () => (
                                             </ButtonGroup>
                                             <h4>{count = count + 1}. {todo.todo_text}</h4>
                                         </ListGroupItem>
-
                                     ))}
                                 </ListGroup>
                                 <ListGroup>

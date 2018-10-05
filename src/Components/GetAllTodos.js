@@ -55,11 +55,9 @@ class GetAllTodos extends Component {
                             </Col>
                         </Row>
                     </Grid>
-
                 </div>
             </ApolloProvider>
         );
-
     }
 }
 

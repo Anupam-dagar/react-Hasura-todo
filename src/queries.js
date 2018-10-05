@@ -66,14 +66,3 @@ export const deleteTodo = gql`
         }
     }
 `;
-
-export const getTodosSubscription = gql`
-    subscription onTodoMarked{
-        todos{
-            todo_id
-            todo_text
-            todo_mark
-            todo_user
-        }
-    }
-`;
