@@ -25,9 +25,9 @@ export default class Auth {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
-        history.replace('/');
+        history.replace('/manage');
       } else if (err) {
-        history.replace('/');
+        history.replace('/manage');
         console.log(err);
       }
     });
@@ -41,7 +41,7 @@ export default class Auth {
     localStorage.setItem('expires_at', expiresAt);
     localStorage.setItem('sub', authResult.idTokenPayload.sub);
     // navigate to the home route
-    history.replace('/');
+    history.replace('/manage');
   }
 
   logout() {
@@ -51,7 +51,7 @@ export default class Auth {
     localStorage.removeItem('expires_at');
     localStorage.removeItem('sub');
     // navigate to the home route
-    history.replace('/');
+    history.replace('/manage');
   }
 
   isAuthenticated() {

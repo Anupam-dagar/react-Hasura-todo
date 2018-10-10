@@ -12,7 +12,7 @@ const GetTodos = () => (
     <Query query={getIncompleteTodos}>
         {({ loading, error, data }) => {
             if (loading) return (<h2>Loading... <FontAwesomeIcon icon={faSpinner} style={{ color: 'blue' }} spin /></h2>);
-            if (error) return (`Error! fetching todos, trying again. ${window.location.reload()}`);
+            if (error) return (`Error! fetching todos.`);
             if (data.todos.length === 0) return (
                 <div>
                     <h3>No Todos Created Yet</h3>

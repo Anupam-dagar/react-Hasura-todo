@@ -29,7 +29,7 @@ class GetAllTodos extends Component {
                                 <Query query={getAllTodos}>
                                     {({ loading, error, data }) => {
                                         if (loading) return (<h2>Loading... <FontAwesomeIcon icon={faSpinner} style={{ color: 'blue' }} spin /></h2>);
-                                        if (error) return (`Error fetching todos, trying again. ${window.location.reload()}`);
+                                        if (error) return (`Error fetching todos.`);
                                         let count = 0;
                                         return (
                                             <div>
